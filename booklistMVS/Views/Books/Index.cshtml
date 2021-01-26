@@ -1,0 +1,41 @@
+﻿
+@{
+    ViewData["Title"] = "Index";
+    Layout = "_books";
+}
+
+<br />
+<div class="container row p-0 m-0">
+    <div class="col-6">
+        <h2 class="text-info">Book list MVC</h2>
+    </div>
+    <div class="col-3 offset-3">
+        <a asp-action="upsert" asp-controller="Books" class="btn btn-info form-control text-white">
+            Create a new Book
+        </a>
+    </div>
+    <div class="col-12 border p-3">
+        <table id="DT_LOAD" class="table table-striped table-bordered" style="width:100%">
+            <thead>
+                <tr>
+                    <th>
+                        Book Name
+                    </th>
+                    <th>
+                        Author Name
+                    </th>
+                    <th>
+                        Book Date
+                    </th>
+                    <th>
+
+                    </th>
+                </tr>
+            </thead>
+        </table>
+    </div>
+</div>
+
+@section Scripts{
+    <script src="~/js/book.js"></script>
+}

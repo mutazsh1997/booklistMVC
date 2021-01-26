@@ -1,0 +1,61 @@
+﻿
+@{
+    ViewData["Title"] = "Upsert";
+    Layout = "_books";
+}
+@model booklistMVS.Models.Book
+
+<br />
+<h2 class="text-info">@(Model.Id.ToString() == "00000000-0000-0000-0000-000000000000" ? "Create":"Edit")</h2>
+<br />
+<div class="border container" style="padding: 30px">
+    <form method="post">
+
+        @if (Model.Id.ToString() == "00000000-0000-0000-0000-000000000000")
+        {
+            <input type="hidden" asp-for="Id" />
+        }
+        <span>@Model.Id</span>
+        <div class="text-danger" asp-validation-summary="ModelOnly"></div>
+        <div class="form-group row">
+            <div class="col-3">
+                <label asp-for="AuthName">Auth Name</label>
+            </div>
+            <div class="col-6">
+                <input type="text" asp-for="AuthName" class="form-control" />
+                <span asp-validation-for="AuthName" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-3">
+                <label asp-for="BookName">Book Name</label>
+            </div>
+            <div class="col-6">
+                <input type="text" asp-for="BookName" class="form-control" />
+                <span asp-validation-for="BookName" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-3">
+                <label asp-for="BookYear">Year</label>
+            </div>
+            <div class="col-6">
+                <input type="date" asp-for="BookYear" class="form-control" />
+                <span asp-validation-for="BookYear" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-3 offset-3">
+                <button type="submit" class="btn btn-primary form-control">
+                    @(Model.Id.ToString() == "00000000-0000-0000-0000-000000000000" ? "Create":"Update")
+                </button>
+            </div>
+            <div class="col-3">
+                <a asp-action="Index" class="btn btn-success form-control">Back to List</a>
+            </div>
+        </div>
+    </form>
+</div>
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
